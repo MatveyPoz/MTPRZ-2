@@ -4,18 +4,25 @@ Dynamic list implementation based on internal massive structure
 Works with characters (runes)
 Basic list operations support 
 
-##TODO
-- add methods:
-    - length()
-    - append(element)
-    - insert(element, index)
-    - delete(index)
-    - deleteAll(element)
-    - get(index)
-    - clone()
-    - reverse()
-    - findFirst(element)
-    - findLast(element)
-    - clear()
-    - extend(elements)
+### Methods
+- length()
+- append(element)
+- insert(element, index)
 
+### Build and Run
+To build project to exe write in console `go build main.go`
+
+To run main.go write in console `go run main.go`
+
+### TODO
+add methods:
+- delete(index)
+- deleteAll(element)
+- get(index)
+- clone()
+- reverse()
+- findFirst(element) 
+- findLast(element)
+- clear()
+- extend(elements)
+add tests and test run instructions 
