@@ -26,7 +26,7 @@ func (a *ArrayList) Insert(element rune, index int) {
 }
 
 func main() {
-	// Демонстрация всех методов
+
 	list := &ArrayList{}
 
 	// Append

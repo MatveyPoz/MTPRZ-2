@@ -9,10 +9,12 @@ Basic list operations support
 - append(element)
 - insert(element, index)
 
-### Build and Run
+### Build Test and Run
 To build project to exe write in console `go build main.go`
 
 To run main.go write in console `go run main.go`
+
+To test project write in console `go test -v`
 
 ### TODO
 add methods:
@@ -25,4 +27,5 @@ add methods:
 - findLast(element)
 - clear()
 - extend(elements)
-add tests and test run instructions 
+
+Add CI (GitHub Actions)
