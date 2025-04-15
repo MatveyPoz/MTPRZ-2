@@ -12,6 +12,14 @@ Basic list operations support
 - delete(index)
 - deleteAll(element)
 - get(index)
+- reverse()
+- findFirst(element)
+- findLast(element)
+- clear()
+- extend(elements)
+
+### Github Actions Tests
+[![CI Tests](https://github.com/MatveyPoz/MTPRZ-2/actions/workflows/go.yml/badge.svg)](https://github.com/MatveyPoz/MTPRZ-2/actions)
 
 ### Build Test and Run
 To build project to exe write in console `go build main.go`
@@ -20,12 +28,3 @@ To run main.go write in console `go run main.go`
 
 To test project write in console `go test -v`
 
-### TODO
-add methods:
-- reverse()
-- findFirst(element) 
-- findLast(element)
-- clear()
-- extend(elements)
-
-Add CI (GitHub Actions)

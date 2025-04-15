@@ -87,6 +87,60 @@ func TestArrayList(t *testing.T) {
 			t.Error("Clone failed")
 		}
 	})
+
+	t.Run("Reverse", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+		list.Append('b')
+		list.Append('c')
+
+		list.Reverse()
+		if list.elements[0] != 'c' || list.elements[2] != 'a' {
+			t.Error("Reverse failed")
+		}
+	})
+
+	t.Run("FindFirst/FindLast", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+		list.Append('b')
+		list.Append('a')
+
+		if list.FindFirst('a') != 0 || list.FindLast('a') != 2 {
+			t.Error("Find methods failed")
+		}
+
+		if list.FindFirst('x') != -1 {
+			t.Error("Find non-existing failed")
+		}
+	})
+
+	t.Run("Clear", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+		list.Clear()
+
+		if list.Length() != 0 {
+			t.Error("Clear failed")
+		}
+	})
+
+	t.Run("Extend", func(t *testing.T) {
+		list1 := &ArrayList{}
+		list2 := &ArrayList{}
+		list1.Append('a')
+		list2.Append('b')
+
+		list1.Extend(list2)
+		if list1.Length() != 2 || list1.elements[1] != 'b' {
+			t.Error("Extend failed")
+		}
+
+		list2.Append('c')
+		if list1.Length() != 2 { // Should be independent
+			t.Error("Extend should create copy")
+		}
+	})
 }
 
 func assertPanic(t *testing.T, f func()) {

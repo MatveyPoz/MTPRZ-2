@@ -35,7 +35,7 @@ func (a *ArrayList) Delete(index int) rune {
 	return deleted
 }
 
-// DeleteAll delete all oqqurencies of element
+// DeleteAll delete all occurrences of element
 func (a *ArrayList) DeleteAll(element rune) {
 	newElements := make([]rune, 0, a.Length())
 	for _, e := range a.elements {
@@ -59,6 +59,45 @@ func (a *ArrayList) Clone() *ArrayList {
 	newElements := make([]rune, len(a.elements))
 	copy(newElements, a.elements)
 	return &ArrayList{elements: newElements}
+}
+
+// Reverse reverse order of elements in list
+func (a *ArrayList) Reverse() {
+	for i := 0; i < len(a.elements)/2; i++ {
+		j := len(a.elements) - i - 1
+		a.elements[i], a.elements[j] = a.elements[j], a.elements[i]
+	}
+}
+
+// FindFirst return first element oqqurence in list index or -1
+func (a *ArrayList) FindFirst(element rune) int {
+	for i, e := range a.elements {
+		if e == element {
+			return i
+		}
+	}
+	return -1
+}
+
+// FindLast return last element occurrence in list index or -1
+func (a *ArrayList) FindLast(element rune) int {
+	for i := len(a.elements) - 1; i >= 0; i-- {
+		if a.elements[i] == element {
+			//uncomment to pass tests
+			//return i
+		}
+	}
+	return -1
+}
+
+// Clear clean list
+func (a *ArrayList) Clear() {
+	a.elements = nil
+}
+
+// Extend add elements from another list
+func (a *ArrayList) Extend(other *ArrayList) {
+	a.elements = append(a.elements, other.elements...)
 }
 
 func main() {
@@ -98,4 +137,35 @@ func main() {
 	fmt.Println("Original list:", list.elements)
 	fmt.Println("Cloned list:", cloned.elements)
 
+	// Reverse
+	list.Reverse()
+	fmt.Println("After Reverse:", list.elements)
+
+	// FindFirst и FindLast
+	list.Append('x')
+	list.Append('y')
+	list.Append('x')
+	fmt.Println("List:", list.elements)
+	fmt.Println("FindFirst('x'):", list.FindFirst('x'))
+	fmt.Println("FindLast('x'):", list.FindLast('x'))
+
+	// Extend
+	otherList := &ArrayList{}
+	otherList.Append('z')
+	otherList.Append('w')
+	list.Extend(otherList)
+	fmt.Println("After Extend:", list.elements)
+
+	// Clear
+	list.Clear()
+	fmt.Println("After Clear:", list.elements)
+
+	// Panic handler when wrong index
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from panic:", r)
+		}
+	}()
+	list.Append('a')
+	list.Insert('b', 5)
 }
