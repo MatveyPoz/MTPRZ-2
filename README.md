@@ -8,6 +8,10 @@ Basic list operations support
 - length()
 - append(element)
 - insert(element, index)
+- clone()
+- delete(index)
+- deleteAll(element)
+- get(index)
 
 ### Build Test and Run
 To build project to exe write in console `go build main.go`
@@ -18,10 +22,6 @@ To test project write in console `go test -v`
 
 ### TODO
 add methods:
-- delete(index)
-- deleteAll(element)
-- get(index)
-- clone()
 - reverse()
 - findFirst(element) 
 - findLast(element)

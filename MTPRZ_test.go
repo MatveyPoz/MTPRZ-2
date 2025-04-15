@@ -36,6 +36,57 @@ func TestArrayList(t *testing.T) {
 		// Test panic
 		assertPanic(t, func() { list.Insert('d', -1) })
 	})
+	t.Run("Delete", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+		list.Append('b')
+
+		deleted := list.Delete(0)
+		if deleted != 'a' || list.Length() != 1 {
+			t.Error("Delete failed")
+		}
+
+		assertPanic(t, func() { list.Delete(2) })
+	})
+
+	t.Run("DeleteAll", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+		list.Append('b')
+		list.Append('a')
+
+		list.DeleteAll('a')
+		if list.Length() != 1 || list.elements[0] != 'b' {
+			t.Error("DeleteAll failed")
+		}
+
+		list.DeleteAll('x') // No elements
+		if list.Length() != 1 {
+			t.Error("DeleteAll should do nothing")
+		}
+	})
+
+	t.Run("Get", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+
+		if list.Get(0) != 'a' {
+			t.Error("Get failed")
+		}
+
+		assertPanic(t, func() { list.Get(1) })
+	})
+
+	t.Run("Clone", func(t *testing.T) {
+		list := &ArrayList{}
+		list.Append('a')
+		cloned := list.Clone()
+
+		cloned.Append('b')
+		if list.Length() != 1 || cloned.Length() != 2 {
+			t.Error("Clone failed")
+		}
+	})
 }
 
 func assertPanic(t *testing.T, f func()) {
