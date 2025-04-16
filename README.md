@@ -1,7 +1,7 @@
 # ArrayList Go implementation
-Variant 18 % 4 = 2
-Dynamic list implementation based on internal massive structure
-Works with characters (runes)
+Variant 18 % 4 = 2 \
+Dynamic list implementation based on ~~internal massive structure~~ circular singly linked list \
+Works with characters (runes) \
 Basic list operations support 
 
 ### Methods
@@ -28,3 +28,6 @@ To run main.go write in console `go run main.go`
 
 To test project write in console `go test -v`
 
+
+### Conclusion
+Tests are like regular expressions: they're hard to write, but when they work, they're pretty handy.

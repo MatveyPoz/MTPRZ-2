@@ -18,7 +18,7 @@ func TestArrayList(t *testing.T) {
 	t.Run("Append", func(t *testing.T) {
 		list := &ArrayList{}
 		list.Append('a')
-		if list.elements[0] != 'a' || list.Length() != 1 {
+		if list.Get(0) != 'a' || list.Length() != 1 {
 			t.Error("Append failed")
 		}
 	})
@@ -29,7 +29,7 @@ func TestArrayList(t *testing.T) {
 		list.Insert('b', 1) // Valid
 		list.Insert('c', 1) // Middle
 
-		if list.elements[1] != 'c' || list.Length() != 3 {
+		if list.Get(1) != 'c' || list.Length() != 3 {
 			t.Error("Insert failed")
 		}
 
@@ -56,7 +56,7 @@ func TestArrayList(t *testing.T) {
 		list.Append('a')
 
 		list.DeleteAll('a')
-		if list.Length() != 1 || list.elements[0] != 'b' {
+		if list.Length() != 1 || list.Get(0) != 'b' {
 			t.Error("DeleteAll failed")
 		}
 
@@ -95,7 +95,7 @@ func TestArrayList(t *testing.T) {
 		list.Append('c')
 
 		list.Reverse()
-		if list.elements[0] != 'c' || list.elements[2] != 'a' {
+		if list.Get(0) != 'c' || list.Get(2) != 'a' {
 			t.Error("Reverse failed")
 		}
 	})
@@ -132,7 +132,7 @@ func TestArrayList(t *testing.T) {
 		list2.Append('b')
 
 		list1.Extend(list2)
-		if list1.Length() != 2 || list1.elements[1] != 'b' {
+		if list1.Length() != 2 || list1.Get(1) != 'b' {
 			t.Error("Extend failed")
 		}
 
